@@ -1,0 +1,17 @@
+Factura Número: FAC-1753900816731
+Cliente: Pablo Valdivieso
+Cédula: 1105839418
+Fecha: 2025-07-30
+
+Detalles de Planes:
+ - Plan ID: 2
+   Tipo: PlanPostPagoMinutos
+   Número Celular: 0998722868
+   Pago Mensual: $140,00
+
+ - Plan ID: 2
+   Tipo: PlanPostPagoMinutos
+   Número Celular: 0998722868
+   Pago Mensual: $140,00
+
+TOTAL A PAGAR: $140,00

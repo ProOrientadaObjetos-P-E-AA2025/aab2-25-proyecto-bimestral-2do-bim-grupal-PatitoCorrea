@@ -171,6 +171,76 @@ public class PlanControlador {
         return lista;
     }
 
+    public List<Plan> listarPlanesPorCliente(String cedulaCliente) {
+        List<Plan> lista = new ArrayList<>();
+        String sql = "SELECT * FROM planes WHERE cedulaCliente = ?";
+        try (Connection conn = Conexiones.conectar(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, cedulaCliente);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    String tipo = rs.getString("tipo");
+                    Plan plan = null;
+                    switch (tipo) {
+                        case "PostPagoMinutosMegasEconomico" ->
+                            plan = new PlanPostPagoMinutosMegasEconomico(
+                                    rs.getInt("id"),
+                                    rs.getString("cedulaCliente"),
+                                    rs.getString("numeroCelular"),
+                                    rs.getString("marcaCelular"),
+                                    rs.getString("modeloCelular"),
+                                    rs.getInt("minutos"),
+                                    rs.getDouble("costoMinuto"),
+                                    rs.getInt("megas"),
+                                    rs.getDouble("costoGiga"),
+                                    rs.getDouble("descuento")
+                            );
+                        case "PostPagoMinutos" ->
+                            plan = new PlanPostPagoMinutos(
+                                    rs.getInt("id"),
+                                    rs.getString("cedulaCliente"),
+                                    rs.getString("numeroCelular"),
+                                    rs.getString("marcaCelular"),
+                                    rs.getString("modeloCelular"),
+                                    rs.getInt("minutosNacionales"),
+                                    rs.getDouble("costoMinutoNacional"),
+                                    rs.getInt("minutosInternacionales"),
+                                    rs.getDouble("costoMinutoInternacional")
+                            );
+                        case "PostPagoMegas" ->
+                            plan = new PlanPostPagoMegas(
+                                    rs.getInt("id"),
+                                    rs.getString("cedulaCliente"),
+                                    rs.getString("numeroCelular"),
+                                    rs.getString("marcaCelular"),
+                                    rs.getString("modeloCelular"),
+                                    rs.getInt("megas"),
+                                    rs.getDouble("costoGiga"),
+                                    rs.getDouble("tarifaBase")
+                            );
+                        case "PostPagoMinutosMegas" ->
+                            plan = new PlanPostPagoMinutosMegas(
+                                    rs.getInt("id"),
+                                    rs.getString("cedulaCliente"),
+                                    rs.getString("numeroCelular"),
+                                    rs.getString("marcaCelular"),
+                                    rs.getString("modeloCelular"),
+                                    rs.getInt("minutos"),
+                                    rs.getDouble("costoMinuto"),
+                                    rs.getInt("megas"),
+                                    rs.getDouble("costoGiga")
+                            );
+                    }
+                    if (plan != null) {
+                        lista.add(plan);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("[ERROR] Error al listar planes por cliente: " + e.getMessage());
+        }
+        return lista;
+    }
+
     public boolean eliminarPlan(int id) {
         String sql = "DELETE FROM planes WHERE id=?";
         try (Connection conn = Conexiones.conectar(); PreparedStatement ps = conn.prepareStatement(sql)) {

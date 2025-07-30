@@ -1,0 +1,17 @@
+Factura Número: FAC-1753895419512
+Cliente: Patricio Correa
+Cédula: 1105839417
+Fecha: 2025-07-30
+
+Detalles de Planes:
+ - Plan ID: 1
+   Tipo: PlanPostPagoMinutos
+   Número Celular: 0998722869
+   Pago Mensual: $110,00
+
+ - Plan ID: 1
+   Tipo: PlanPostPagoMinutos
+   Número Celular: 0998722869
+   Pago Mensual: $110,00
+
+TOTAL A PAGAR: $110,00
