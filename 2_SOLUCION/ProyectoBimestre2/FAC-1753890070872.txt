@@ -1,0 +1,17 @@
+Factura Número: FAC-1753890070872
+Cliente: r r
+Cédula: 22042191250
+Fecha: 2025-07-30
+
+Detalles de Planes:
+ - Plan ID: 2
+   Tipo: PlanPostPagoMinutosMegasEconomico
+   Número Celular: 998722869
+   Pago Mensual: $152,00
+
+ - Plan ID: 2
+   Tipo: PlanPostPagoMinutosMegasEconomico
+   Número Celular: 998722869
+   Pago Mensual: $152,00
+
+TOTAL A PAGAR: $152,00
